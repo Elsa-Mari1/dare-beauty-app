@@ -130,8 +130,16 @@ export const testimonials = [
 ];
 
 export const placeGallery = [
-  { src: "/place-gallery-1.png", alt: "Dare Beauty Bar profile and branding view" },
-  { src: "/place-gallery-2.png", alt: "Dare Beauty Bar interior and beauty service space" },
+  { src: "/gallery-01.png", alt: "Brow shaping and tint result at Dare Beauty" },
+  { src: "/gallery-02.png", alt: "Nail art design showcase by Dare Beauty" },
+  { src: "/gallery-03.png", alt: "Soft pink nail design close-up" },
+  { src: "/gallery-04.png", alt: "Red and pink striped manicure design" },
+  { src: "/gallery-05.png", alt: "Pink wave nail art with detail lines" },
+  { src: "/gallery-06.png", alt: "Grey minimalist manicure with accent nails" },
+  { src: "/gallery-07.png", alt: "Floral grey nail art set at Dare Beauty" },
+  { src: "/gallery-08.png", alt: "Bright pink and silver manicure set" },
+  { src: "/gallery-09.png", alt: "Colorful swirl nail art with pastel tones" },
+  { src: "/gallery-10.png", alt: "Nail service portfolio style close-up" },
 ];
 
 export const faqs = [
