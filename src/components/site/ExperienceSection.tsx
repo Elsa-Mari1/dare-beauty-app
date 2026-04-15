@@ -3,7 +3,11 @@ import { processSteps } from "@/data/siteContent";
 export function ExperienceSection() {
   return (
     <section id="experience" className="section card">
-      <h2>Designed Around Better Client UX</h2>
+      <h2>How Booking Works</h2>
+      <p className="section-intro">
+        From choosing your treatment to showing up for your appointment, we keep everything simple and
+        stress-free.
+      </p>
       <div className="steps">
         {processSteps.map((step, index) => (
           <article key={step.title} className="step-card">
