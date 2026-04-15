@@ -2,8 +2,10 @@ import { BookingSection } from "@/components/site/BookingSection";
 import { ExperienceSection } from "@/components/site/ExperienceSection";
 import { FaqSection } from "@/components/site/FaqSection";
 import { Footer } from "@/components/site/Footer";
+import { GallerySection } from "@/components/site/GallerySection";
 import { Header } from "@/components/site/Header";
 import { HeroSection } from "@/components/site/HeroSection";
+import { LocationSection } from "@/components/site/LocationSection";
 import { MembershipsSection } from "@/components/site/MembershipsSection";
 import { PartiesSection } from "@/components/site/PartiesSection";
 import { ServicesSection } from "@/components/site/ServicesSection";
@@ -21,6 +23,8 @@ export default function Home() {
         <ExperienceSection />
         <MembershipsSection />
         <PartiesSection />
+        <GallerySection />
+        <LocationSection />
         <TestimonialsSection />
         <BookingSection />
         <FaqSection />

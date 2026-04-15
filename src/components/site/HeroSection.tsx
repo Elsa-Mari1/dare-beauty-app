@@ -1,4 +1,4 @@
-import { bookingLink, highlights, whatsappLink } from "@/data/siteContent";
+import { bookingLink, highlights, instagramLink, whatsappLink } from "@/data/siteContent";
 
 export function HeroSection() {
   return (
@@ -18,6 +18,9 @@ export function HeroSection() {
             <a className="secondary-btn" href={whatsappLink} target="_blank" rel="noreferrer">
               WhatsApp Us
             </a>
+            <a className="secondary-btn" href={instagramLink} target="_blank" rel="noreferrer">
+              Follow on Instagram
+            </a>
           </div>
           <ul className="mini-bullets">
             {highlights.map((item) => (
@@ -35,6 +38,9 @@ export function HeroSection() {
           </a>
           <a className="panel-link" href="#parties">
             View party packs
+          </a>
+          <a className="panel-link" href="#location">
+            Find our location
           </a>
           <a className="panel-link" href={bookingLink} target="_blank" rel="noreferrer">
             Open booking portal

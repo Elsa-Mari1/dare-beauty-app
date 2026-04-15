@@ -1,11 +1,18 @@
 export const bookingLink = "https://online.mysalonbridge.com/bridge/brackenfell-dare-beauty";
 export const whatsappLink = "https://wa.me/27621540345";
+export const instagramLink = "https://www.instagram.com/dare_beautybar?igsh=YXd5dXUzNm41bmRh";
+export const mapsDirectionsLink =
+  "https://www.google.com/maps/search/?api=1&query=220+Buitenkant+Street+Protea+Hoogte+Brackenfell+South+Africa";
+export const mapsEmbedLink =
+  "https://www.google.com/maps?q=220%20Buitenkant%20Street%20Protea%20Hoogte%20Brackenfell%20South%20Africa&output=embed";
 
 export const navItems = [
   { href: "#services", label: "Services" },
   { href: "#experience", label: "Experience" },
   { href: "#memberships", label: "Memberships" },
   { href: "#parties", label: "Party Packs" },
+  { href: "#gallery", label: "Gallery" },
+  { href: "#location", label: "Visit Us" },
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
 ];
@@ -107,19 +114,24 @@ export const partyPacks = [
 export const testimonials = [
   {
     quote:
-      "The team is consistent, professional, and so welcoming. My lashes always look fresh without overdoing it.",
-    name: "Client Feedback",
+      "I do my brows and lashes here every month and they are always consistent. The team is friendly and professional.",
+    name: "Natascha Z.",
   },
   {
     quote:
-      "I joined the membership and my skin has never looked this healthy. Booking is easy and quick.",
-    name: "DareGlow Member",
+      "The acne facial plan has helped my skin so much. The monthly membership keeps me on track and the booking system is simple.",
+    name: "Gabriella N.",
   },
   {
     quote:
-      "My daughter loved the Mini Glam party. It was organized, beautiful, and stress-free.",
+      "My daughter loved her Mini Glam party. Everything was well organized and the setup was beautiful.",
     name: "Mini Glam Parent",
   },
+];
+
+export const placeGallery = [
+  { src: "/place-gallery-1.png", alt: "Dare Beauty Bar profile and branding view" },
+  { src: "/place-gallery-2.png", alt: "Dare Beauty Bar interior and beauty service space" },
 ];
 
 export const faqs = [

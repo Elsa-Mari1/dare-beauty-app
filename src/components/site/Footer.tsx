@@ -1,4 +1,4 @@
-import { bookingLink } from "@/data/siteContent";
+import { bookingLink, instagramLink, mapsDirectionsLink } from "@/data/siteContent";
 
 export function Footer() {
   return (
@@ -10,6 +10,18 @@ export function Footer() {
       </p>
       <p>
         Email: <a href="mailto:dare.beauty@icloud.com">dare.beauty@icloud.com</a>
+      </p>
+      <p>
+        Instagram:{" "}
+        <a href={instagramLink} target="_blank" rel="noreferrer">
+          @dare_beautybar
+        </a>
+      </p>
+      <p>
+        Directions:{" "}
+        <a href={mapsDirectionsLink} target="_blank" rel="noreferrer">
+          Open in Google Maps
+        </a>
       </p>
       <a className="book-btn" href={bookingLink} target="_blank" rel="noreferrer">
         Book Now
