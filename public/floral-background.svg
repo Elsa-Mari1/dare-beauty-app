@@ -1,0 +1,27 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.18">
+    <!-- Outer Petals -->
+    <path d="M300 120C340 160 360 210 300 260C240 210 260 160 300 120Z"
+          stroke="#C0325E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M480 300C440 340 390 360 340 300C390 240 440 260 480 300Z"
+          stroke="#D4608A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M300 480C260 440 240 390 300 340C360 390 340 440 300 480Z"
+          stroke="#C0325E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M120 300C160 260 210 240 260 300C210 360 160 340 120 300Z"
+          stroke="#D4608A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Inner Petals -->
+    <path d="M300 200C330 230 330 270 300 300C270 270 270 230 300 200Z"
+          stroke="#C0325E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M300 300C330 330 330 370 300 400C270 370 270 330 300 300Z"
+          stroke="#D4608A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M200 300C230 270 270 270 300 300C270 330 230 330 200 300Z"
+          stroke="#C0325E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M300 300C330 270 370 270 400 300C370 330 330 330 300 300Z"
+          stroke="#D4608A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Center Bloom -->
+    <circle cx="300" cy="300" r="20" stroke="#C0325E" stroke-width="2"/>
+    <circle cx="300" cy="300" r="10" fill="#F7D6E0"/>
+  </g>
+</svg>
