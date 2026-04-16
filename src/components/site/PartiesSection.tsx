@@ -7,7 +7,6 @@ const partyPackages = [
     tagline: "A fun feel-good pamper experience",
     pricing: "R1 500 (6 kids) · R1 800 (8 kids)",
     duration: "±1 Hour",
-    badge: "Great for younger girls",
     includes: [
       "Welcome drink",
       "Mini facial with cucumber slices",
@@ -27,7 +26,6 @@ const partyPackages = [
     tagline: "The perfect mix of pampering, creativity & glam fun",
     pricing: "R1 800 (6 kids) · R2 000 (8 kids)",
     duration: "±1.5 Hours",
-    badge: "Most Popular ♥",
     includes: [
       "Welcome drink",
       "Mini facial with cucumber slices",
@@ -49,7 +47,6 @@ const partyPackages = [
     tagline: "The ultimate mini glam party for a truly special celebration",
     pricing: "R2 100 (6 kids) · R2 500 (8 kids)",
     duration: "2 – 2.5 Hours",
-    badge: "Ultimate Experience",
     includes: [
       "Welcome drink",
       "Facial with mask",
@@ -91,8 +88,9 @@ export function PartiesSection() {
       </div>
 
       <h2>Mini Glam Parties</h2>
+      <h3>Where little queens glow</h3>
       <p className="section-intro">
-        Where little queens glow. Pamper. Play. Sparkle. Repeat. Up to 8 guests per party — perfect
+         Pamper. Play. Sparkle. Repeat. <br/> Up to 8 guests per party — perfect
         for birthdays and unforgettable memories.
       </p>
 
@@ -103,7 +101,7 @@ export function PartiesSection() {
             key={pkg.title}
           >
             {pkg.highlight && <div className="party-featured-ribbon">Most Popular ♥</div>}
-            <span className="badge">{pkg.badge}</span>
+
             <h4>{pkg.title}</h4>
             <p className="party-tagline">{pkg.tagline}</p>
             <p className="price">{pkg.pricing}</p>
@@ -116,12 +114,17 @@ export function PartiesSection() {
               ))}
             </ul>
 
-            <p className="label">{pkg.craft}</p>
-            <div className="craft-options">
-              {pkg.craftOptions.map((c) => (
-                <span className="craft-chip" key={c}>{c}</span>
-              ))}
-            </div>
+            <div className="craft-section">
+    <p className="label">{pkg.craft}</p>
+    <div className="craft-options">
+      {pkg.craftOptions.map((c) => (
+        <span className="craft-chip" key={c}>
+          {c}
+        </span>
+      ))}
+    </div>
+  </div>
+
           </article>
         ))}
       </div>
