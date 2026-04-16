@@ -1,6 +1,7 @@
 export const bookingLink = "https://online.mysalonbridge.com/bridge/brackenfell-dare-beauty";
 export const whatsappLink = "https://wa.me/27621540345";
 export const instagramLink = "https://www.instagram.com/dare_beautybar?igsh=YXd5dXUzNm41bmRh";
+export const facebookLink = "https://www.facebook.com/share/1Avw2HzueJ/";
 export const mapsDirectionsLink =
   "https://www.google.com/maps/search/?api=1&query=220+Buitenkant+Street+Protea+Hoogte+Brackenfell+South+Africa";
 export const mapsEmbedLink =
@@ -145,7 +146,7 @@ export const placeGallery = [
 export const faqs = [
   {
     q: "How do I book an appointment?",
-    a: "Use the Book Online button to open SalonBridge, then choose your service, staff member, and time slot.",
+    a: "Click the Start Booking button to open SalonBridge, then choose your service, staff member, and time slot",
   },
   {
     q: "Do memberships require a contract?",

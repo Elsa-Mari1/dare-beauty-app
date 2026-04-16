@@ -1,5 +1,6 @@
 import { BookingSection } from "@/components/site/BookingSection";
 import { ExperienceSection } from "@/components/site/ExperienceSection";
+import { FallingPetals } from "@/components/site/FallingPetals";
 import { FaqSection } from "@/components/site/FaqSection";
 import { Footer } from "@/components/site/Footer";
 import { GallerySection } from "@/components/site/GallerySection";
@@ -14,7 +15,10 @@ import { bookingLink } from "@/data/siteContent";
 
 export default function Home() {
   return (
-    <div className="site">
+     <>
+      {/* Petals render behind everything, fixed to the viewport */}
+      <FallingPetals />
+    <div className="site site-background">
       <Header />
 
       <main id="top">
@@ -31,10 +35,10 @@ export default function Home() {
       </main>
 
       <Footer />
-
       <a className="floating-cta" href={bookingLink} target="_blank" rel="noreferrer">
-        Book Appointment
+        Start Booking
       </a>
     </div>
+    </>
   );
 }
