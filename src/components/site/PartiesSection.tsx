@@ -1,11 +1,16 @@
 import Image from "next/image";
 import { bookingLink, whatsappLink } from "@/data/siteContent";
+import { PayFastButton } from "../PayFastButton";
 
 const partyPackages = [
   {
     title: "Mini Glow",
     tagline: "A fun feel-good pamper experience",
     pricing: "R1 500 (6 kids) · R1 800 (8 kids)",
+    variants: [
+      { label: "Pay Deposit — 6 Kids (R1 500)", amount: 1500, id: "party-mini-glow-6" },
+      { label: "Pay Deposit — 8 Kids (R1 800)", amount: 1800, id: "party-mini-glow-8" },
+    ],
     duration: "±1 Hour",
     includes: [
       "Welcome drink",
@@ -25,6 +30,10 @@ const partyPackages = [
     title: "Mini Glam",
     tagline: "The perfect mix of pampering, creativity & glam fun",
     pricing: "R1 800 (6 kids) · R2 000 (8 kids)",
+    variants: [
+      { label: "Pay Deposit — 6 Kids (R1 800)", amount: 1800, id: "party-mini-glam-6" },
+      { label: "Pay Deposit — 8 Kids (R2 000)", amount: 2000, id: "party-mini-glam-8" },
+    ],
     duration: "±1.5 Hours",
     includes: [
       "Welcome drink",
@@ -46,6 +55,10 @@ const partyPackages = [
     title: "Mini Luxe",
     tagline: "The ultimate mini glam party for a truly special celebration",
     pricing: "R2 100 (6 kids) · R2 500 (8 kids)",
+    variants: [
+      { label: "Pay Deposit — 6 Kids (R2 100)", amount: 2100, id: "party-mini-luxe-6" },
+      { label: "Pay Deposit — 8 Kids (R2 500)", amount: 2500, id: "party-mini-luxe-8" },
+    ],
     duration: "2 – 2.5 Hours",
     includes: [
       "Welcome drink",
@@ -124,6 +137,28 @@ export function PartiesSection() {
       ))}
     </div>
   </div>
+   {/* ── PayFast payment buttons — one per guest count ────── */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.6rem",
+                marginTop: "auto", 
+                paddingTop: "1.2rem",
+              }}
+            >
+              {pkg.variants.map((v) => (
+                <PayFastButton
+                  key={v.id}
+                  itemName={`Dare Beauty ${pkg.title} Party - ${v.amount === pkg.variants[0].amount ? "6" : "8"} Kids`}
+                  amount={v.amount}
+                  paymentId={v.id}
+                  description={pkg.tagline}
+                  label={v.label}
+                  className="book-btn"
+                />
+              ))}
+            </div>
 
           </article>
         ))}
