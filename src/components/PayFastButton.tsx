@@ -19,6 +19,10 @@ type Props = {
   className?: string;
   /** Button label – defaults to "Pay Now" */
   label?: string;
+  customerName?: string;
+  customerSurname?: string;
+  customerEmail?: string;
+
 };
 
 /**
@@ -39,6 +43,9 @@ export function PayFastButton({
   recurringAmount,
   className = "book-btn",
   label = "Pay Now",
+  customerName,
+  customerSurname,
+  customerEmail,
 }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -58,6 +65,9 @@ export function PayFastButton({
           description,
           isSubscription,
           recurringAmount,
+          customerName,
+          customerSurname,
+          customerEmail,
         }),
       });
 

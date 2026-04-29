@@ -515,6 +515,22 @@ h3 {
   margin-top: 1rem;
 }
 
+.input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
 .party-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

@@ -61,25 +61,16 @@ function pfEncode(val: string): string {
 }
 
 
-export function generateSignature(
-  data: Omit<PayFastPaymentData, "signature">,
-  passphrase: string
-): string {
-  const params = new URLSearchParams();
+export function generateSignature(params: Record<string, string>, passphrase: string): string {
+  const { signature, ...rest } = params;
+  
+  const queryString = Object.entries(rest)
+    .map(([k, v]) => `${k}=${encodeURIComponent(v.trim()).replace(/%20/g, "+")}`)
+    .join("&");
 
-  FIELD_ORDER.forEach((key) => {
-    const value = data[key as keyof typeof data];
-    if (value !== undefined && value !== null && value !== "") {
-      params.append(key, String(value).trim());
-    }
-  });
-
-  if (passphrase) {
-    params.append("passphrase", passphrase.trim());
-  }
-
-  const stringToHash = params.toString();
-  console.log("SIGN STRING:", stringToHash);
+  const stringToHash = passphrase
+    ? `${queryString}&passphrase=${encodeURIComponent(passphrase.trim()).replace(/%20/g, "+")}`
+    : queryString;
 
   return crypto.createHash("md5").update(stringToHash).digest("hex");
 }
