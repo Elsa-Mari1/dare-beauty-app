@@ -67,6 +67,7 @@ export const skinMemberships = [
   {
     title: "DareGlow Essential",
     price: "R300 / month",
+    priceAmount: 300,
     value: "Value: R560",
     items: ["Dermaplane Facial or Acne Facial", "Brow Wax & Tint"],
     perks: ["5% off treatments", "10% off retail products", "Birthday glow add-on"],
@@ -74,6 +75,7 @@ export const skinMemberships = [
   {
     title: "DareGlow Peel Club",
     price: "R400 / month",
+    priceAmount: 400,
     value: "Value: R650",
     items: ["Pro Glow / Pro Enzyme / Pro Mela / Pro Age Peel", "Hand or Decollete Treatment"],
     perks: ["10% off treatments", "10% off retail products", "Priority booking", "Birthday voucher"],
@@ -81,6 +83,7 @@ export const skinMemberships = [
   {
     title: "DareGlow Advanced",
     price: "R500 / month",
+    priceAmount: 500,
     value: "Value: R1000+",
     items: ["Microneedling", "Chemical Peel", "LED Light Therapy or Hydrating Mask"],
     perks: ["10% off treatments", "10% off retail products", "Priority booking", "Birthday gift"],

@@ -1,4 +1,90 @@
+"use client";
+
+import { useState } from "react";
 import { lashMemberships, memberPerks, skinMemberships } from "@/data/siteContent";
+import { PayFastButton } from "../PayFastButton";
+
+// Parse "Classic: R350" → { label: "Classic", amount: 350 }
+function parseLashTier(option: string): { label: string; amount: number } {
+  const [label, price] = option.split(":");
+  const amount = parseInt(price.replace(/\D/g, ""), 10);
+  return { label: label.trim(), amount };
+}
+
+function LashMembershipCard({ plan }: { plan: (typeof lashMemberships)[0] }) {
+  const tiers = plan.pricing.map(parseLashTier);
+  const [selected, setSelected] = useState<number>(tiers[0].amount);
+
+  const selectedTier = tiers.find((t) => t.amount === selected)!;
+  const planSlug = plan.title.toLowerCase().replace(/\s+/g, "-");
+
+  return (
+    <article className="plan-card">
+      <h4>{plan.title}</h4>
+      <p>{plan.details}</p>
+
+      <p className="label" style={{ marginTop: "1rem" }}>Choose your lash style</p>
+      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "1rem" }}>
+        {tiers.map((tier) => (
+          <button
+              key={tier.amount}
+              type="button"
+              onClick={() => setSelected(tier.amount)}
+              style={{
+  padding: "0.5rem 1rem",
+  borderRadius: "999px",
+  border: "1.5px solid var(--border)",
+  fontSize: "0.85rem",
+  cursor: "pointer",
+  transition: "all 0.2s ease",
+
+  background:
+    selected === tier.amount
+      ? "var(--border)"
+      : "transparent",
+
+  color:
+    selected === tier.amount
+      ? "#fff"
+      : "var(--text)",
+
+  borderColor:
+    selected === tier.amount
+      ? "var(--border)"
+      : "var(--border)",
+
+ 
+
+  transform:
+    selected === tier.amount
+      ? "translateY(-1px)"
+      : "none",
+}}
+            >
+
+            {tier.label}
+          </button>
+        ))}
+      </div>
+
+      <p className="price">R{selectedTier.amount} / month</p>
+      <p style={{ fontSize: "0.8rem", opacity: 0.7 }}>
+        Renews monthly until cancelled
+      </p>
+
+      <div style={{ marginTop: "auto", paddingTop: "1rem" }}>
+      <PayFastButton
+        itemName={`${plan.title} - ${selectedTier.label}`}
+        amount={selectedTier.amount}
+        paymentId={`lash-${planSlug}-${selectedTier.label.toLowerCase()}`}
+        isSubscription
+        label="Subscribe"
+        className="book-btn"
+      />
+      </div>  
+    </article>
+  );
+}
 
 export function MembershipsSection() {
   return (
@@ -28,6 +114,16 @@ export function MembershipsSection() {
                 <li key={perk}>{perk}</li>
               ))}
             </ul>
+            <div style={{ marginTop: "auto", paddingTop: "1rem" }}>
+            <PayFastButton
+              itemName={`${plan.title} Membership`}
+              amount={plan.priceAmount}
+              paymentId={`skin-membership-${plan.title.toLowerCase().replace(/\s+/g, "-")}`}
+              isSubscription
+              label="Subscribe"
+              className="book-btn"
+            />
+            </div>
           </article>
         ))}
       </div>
@@ -35,16 +131,7 @@ export function MembershipsSection() {
       <h3>Lash Memberships</h3>
       <div className="cards">
         {lashMemberships.map((plan) => (
-          <article className="plan-card" key={plan.title}>
-            <h4>{plan.title}</h4>
-            <p>{plan.details}</p>
-            <p className="label">Monthly Pricing</p>
-            <ul>
-              {plan.pricing.map((option) => (
-                <li key={option}>{option}</li>
-              ))}
-            </ul>
-          </article>
+          <LashMembershipCard key={plan.title} plan={plan} />
         ))}
       </div>
 
