@@ -54,20 +54,19 @@ export function PayFastButton({
     setLoading(true);
     setError(null);
 
-      // Validate required fields for subscriptions
-  if (isSubscription) {
+    // Validate required fields for customers
     if (!customerName?.trim() || !customerEmail?.trim()) {
-      setError("Please enter your name and email before subscribing.");
-      setLoading(false);
-      return;
-    }
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail);
-    if (!emailOk) {
-      setError("Please enter a valid email address.");
-      setLoading(false);
-      return;
-    }
+    setError("Please enter your name and email before continuing.");
+    setLoading(false);
+    return;
   }
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail);
+  if (!emailOk) {
+    setError("Please enter a valid email address.");
+    setLoading(false);
+    return;
+  }
+
 
     try {
       const res = await fetch("/api/payfast/create-payment", {

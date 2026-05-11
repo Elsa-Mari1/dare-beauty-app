@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
 import { bookingLink, whatsappLink } from "@/data/siteContent";
 import { PayFastButton } from "../PayFastButton";
+import { CustomerFields } from "../CustomerFields";
+import { useState } from "react";
 
 const partyPackages = [
   {
@@ -85,10 +88,65 @@ const extras = [
   { label: "Party Boxes", note: "Personalised themes available" },
 ];
 
+function PartyCard({ pkg }: { pkg: typeof partyPackages[0] }) {
+  const [customer, setCustomer] = useState({ name: "", surname: "", email: "" });
+
+  return (
+    <article
+      className={`plan-card party-plan-card${pkg.highlight ? " party-plan-card--featured" : ""}`}
+    >
+      {pkg.highlight && <div className="party-featured-ribbon">Most Popular ♥</div>}
+
+      <h4>{pkg.title}</h4>
+      <p className="party-tagline">{pkg.tagline}</p>
+      <p className="price">{pkg.pricing}</p>
+      <p className="value">Duration: {pkg.duration}</p>
+
+      <p className="label">Includes</p>
+      <ul>
+        {pkg.includes.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+
+      <div className="craft-section">
+        <p className="label">{pkg.craft}</p>
+        <div className="craft-options">
+          {pkg.craftOptions.map((c) => (
+            <span className="craft-chip" key={c}>{c}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Payment block — pushed to bottom of card */}
+      <div className="craft-section">
+        <p className="label">Your Details</p>
+        <CustomerFields onChange={setCustomer} />
+        <div className="party-card-buttons">
+          {pkg.variants.map((v) => (
+            <PayFastButton
+              key={v.id}
+              itemName={`Dare Beauty ${pkg.title} Party - ${v.amount === pkg.variants[0].amount ? "6" : "8"} Kids`}
+              amount={v.amount}
+              paymentId={v.id}
+              description={pkg.tagline}
+              label={v.label}
+              className="book-btn"
+              customerName={customer.name}
+              customerSurname={customer.surname}
+              customerEmail={customer.email}
+            />
+          ))}
+        </div>
+      </div>
+
+    </article>
+  );
+}
+
 export function PartiesSection() {
   return (
     <section id="parties" className="section">
-      {/* Small header image */}
       <div className="party-header">
         <Image
           src="/Dare_Mini_Glam_Banner.png"
@@ -103,68 +161,18 @@ export function PartiesSection() {
       <h2>Mini Glam Parties</h2>
       <h3>Where little queens glow</h3>
       <p className="section-intro">
-         Pamper. Play. Sparkle. Repeat. <br/> Up to 8 guests per party — perfect
-        for birthdays and unforgettable memories.
-      </p>
+       Up to 8 guests per party — perfect for birthdays and unforgettable memories.
+       </p>
+       <h5>
+       Pay your deposit to secure your booking. We'll contact you within 24 hours via WhatsApp to confirm your date and details.
+      </h5>
 
       <div className="cards">
         {partyPackages.map((pkg) => (
-          <article
-            className={`plan-card party-plan-card${pkg.highlight ? " party-plan-card--featured" : ""}`}
-            key={pkg.title}
-          >
-            {pkg.highlight && <div className="party-featured-ribbon">Most Popular ♥</div>}
-
-            <h4>{pkg.title}</h4>
-            <p className="party-tagline">{pkg.tagline}</p>
-            <p className="price">{pkg.pricing}</p>
-            <p className="value">Duration: {pkg.duration}</p>
-
-            <p className="label">Includes</p>
-            <ul>
-              {pkg.includes.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-
-            <div className="craft-section">
-    <p className="label">{pkg.craft}</p>
-    <div className="craft-options">
-      {pkg.craftOptions.map((c) => (
-        <span className="craft-chip" key={c}>
-          {c}
-        </span>
-      ))}
-    </div>
-  </div>
-   {/* ── PayFast payment buttons — one per guest count ────── */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.6rem",
-                marginTop: "auto", 
-                paddingTop: "1.2rem",
-              }}
-            >
-              {pkg.variants.map((v) => (
-                <PayFastButton
-                  key={v.id}
-                  itemName={`Dare Beauty ${pkg.title} Party - ${v.amount === pkg.variants[0].amount ? "6" : "8"} Kids`}
-                  amount={v.amount}
-                  paymentId={v.id}
-                  description={pkg.tagline}
-                  label={v.label}
-                  className="book-btn"
-                />
-              ))}
-            </div>
-
-          </article>
+          <PartyCard key={pkg.title} pkg={pkg} />
         ))}
       </div>
 
-      {/* Extras */}
       <div className="member-perks card" style={{ marginTop: "1.5rem" }}>
         <h3>Optional Extras Available</h3>
         <ul className="grid-list">
@@ -177,10 +185,8 @@ export function PartiesSection() {
         </ul>
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "1.5rem", display: "flex", gap: "0.8rem", justifyContent: "center", flexWrap: "wrap" }}>
-        <a className="book-btn" href={bookingLink} target="_blank" rel="noreferrer">
-          Book Your Party Today
-        </a>
+      <div className="party-section-actions">
+        
         <a className="secondary-btn" href={whatsappLink} target="_blank" rel="noreferrer">
           Ask Us on WhatsApp
         </a>
