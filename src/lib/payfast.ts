@@ -61,11 +61,19 @@ function pfEncode(val: string): string {
 }
 
 
-export function generateSignature(params: Record<string, string>, passphrase: string): string {
+export function generateSignature(
+  params: Record<string, string>,
+  passphrase: string
+): string {
   const { signature, ...rest } = params;
-  
-  const queryString = Object.entries(rest)
-    .map(([k, v]) => `${k}=${encodeURIComponent(v.trim()).replace(/%20/g, "+")}`)
+
+  // Use FIELD_ORDER if all keys are known PayFast fields
+  const orderedKeys = FIELD_ORDER.filter(
+    (key) => rest[key] !== undefined && rest[key] !== null && rest[key] !== ""
+  );
+
+  const queryString = orderedKeys
+    .map((k) => `${k}=${encodeURIComponent(String(rest[k]).trim()).replace(/%20/g, "+")}`)
     .join("&");
 
   const stringToHash = passphrase
@@ -98,7 +106,25 @@ export function buildPayFastPayload(
     }),
   };
 
-  const signature = generateSignature(fullData, PAYFAST_CONFIG.passphrase);
+  // Build ordered param string manually — consistent with generateSignature
+  const parts: string[] = [];
+  FIELD_ORDER.forEach((key) => {
+    const value = fullData[key as keyof typeof fullData];
+    if (value !== undefined && value !== null && value !== "") {
+      parts.push(`${key}=${encodeURIComponent(String(value).trim()).replace(/%20/g, "+")}`);
+    }
+  });
+
+  if (PAYFAST_CONFIG.passphrase) {
+    parts.push(
+      `passphrase=${encodeURIComponent(PAYFAST_CONFIG.passphrase.trim()).replace(/%20/g, "+")}`
+    );
+  }
+
+  const stringToHash = parts.join("&");
+  console.log("BUILD SIGN STRING:", stringToHash); // remove before go-live
+
+  const signature = crypto.createHash("md5").update(stringToHash).digest("hex");
 
   return { ...fullData, signature };
 }
