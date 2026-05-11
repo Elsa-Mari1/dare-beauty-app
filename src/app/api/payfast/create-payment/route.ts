@@ -45,10 +45,6 @@ export async function POST(req: NextRequest) {
 
     const payload = buildPayFastPayload(params);
 
-    // // Remove debug logging before going to production
-    // console.log("=== PAYFAST DEBUG ===");
-    // console.log("Passphrase used:", JSON.stringify(PAYFAST_CONFIG.passphrase));
-    // console.log("Payload:", JSON.stringify(payload, null, 2));
 
     return NextResponse.json({
       url: PAYFAST_CONFIG.baseUrl,

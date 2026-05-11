@@ -122,7 +122,6 @@ export function buildPayFastPayload(
   }
 
   const stringToHash = parts.join("&");
-  console.log("BUILD SIGN STRING:", stringToHash); // remove before go-live
 
   const signature = crypto.createHash("md5").update(stringToHash).digest("hex");
 

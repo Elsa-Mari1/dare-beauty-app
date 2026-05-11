@@ -93,8 +93,6 @@ export function PayFastButton({
 
       const { url, payload } = await res.json();
 
-      console.log("Signature:", payload.signature);
-      console.log("PAYLOAD SENT TO PAYFAST:", payload);
 
       // Build a temporary form and submit it to PayFast
       const form = document.createElement("form");
