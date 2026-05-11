@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { lashMemberships, memberPerks, skinMemberships } from "@/data/siteContent";
 import { PayFastButton } from "../PayFastButton";
+import { CustomerFields } from "../CustomerFields";
 
 // Parse "Classic: R350" → { label: "Classic", amount: 350 }
 function parseLashTier(option: string): { label: string; amount: number } {
@@ -10,43 +11,7 @@ function parseLashTier(option: string): { label: string; amount: number } {
   const amount = parseInt(price.replace(/\D/g, ""), 10);
   return { label: label.trim(), amount };
 }
-function CustomerFields({
-  onChange,
-}: {
-  onChange: (fields: { name: string; surname: string; email: string }) => void;
-}) {
-  const [fields, setFields] = useState({ name: "", surname: "", email: "" });
 
-  function update(key: string, value: string) {
-    const updated = { ...fields, [key]: value };
-    setFields(updated);
-    onChange(updated);
-  }
-
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginBottom: "1rem" }}>
-      <input
-        className="input"
-        placeholder="First name"
-        value={fields.name}
-        onChange={e => update("name", e.target.value)}
-      />
-      <input
-        className="input"
-        placeholder="Last name"
-        value={fields.surname}
-        onChange={e => update("surname", e.target.value)}
-      />
-      <input
-        className="input"
-        type="email"
-        placeholder="Email address"
-        value={fields.email}
-        onChange={e => update("email", e.target.value)}
-      />
-    </div>
-  );
-}
 
 function SkinMembershipCard({ plan }: { plan: (typeof skinMemberships)[0] }) {
   const [customer, setCustomer] = useState({ name: "", surname: "", email: "" });

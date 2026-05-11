@@ -285,6 +285,22 @@ a {
   color: var(--muted);
   font-size: 0.9rem;
   margin: 0.2rem 0 0.5rem;
+  
+}
+
+.party-card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.party-section-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
 }
 
 .craft-options {
@@ -597,6 +613,13 @@ h3 {
   opacity: 0.75;
   padding: 0.25rem;
   line-height: 1;
+}
+
+.customer-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .testimonial-grid {
