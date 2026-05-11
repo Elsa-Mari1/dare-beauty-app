@@ -10,6 +10,7 @@ import { LocationSection } from "@/components/site/LocationSection";
 import { MembershipsSection } from "@/components/site/MembershipsSection";
 import { PartiesSection } from "@/components/site/PartiesSection";
 import { ServicesSection } from "@/components/site/ServicesSection";
+import { SpecialsBanner } from "@/components/site/SpecialsBanner";
 import { TestimonialsSection } from "@/components/site/TestimonialsSection";
 import { bookingLink } from "@/data/siteContent";
 
@@ -20,6 +21,7 @@ export default function Home() {
       <FallingPetals />
     <div className="site site-background">
       <Header />
+      <SpecialsBanner />  
 
       <main id="top">
         <HeroSection />
@@ -30,8 +32,8 @@ export default function Home() {
         <GallerySection />
         <LocationSection />
         <TestimonialsSection />
-        <BookingSection />
         <FaqSection />
+        <BookingSection />
       </main>
 
       <Footer />

@@ -13,8 +13,8 @@ export const navItems = [
   { href: "#memberships", label: "Memberships" },
   { href: "#parties", label: "Party Packs" },
   { href: "#gallery", label: "Gallery" },
-  { href: "#location", label: "Visit Us" },
   { href: "#faq", label: "FAQ" },
+  { href: "#location", label: "Visit Us" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -148,8 +148,12 @@ export const placeGallery = [
 
 export const faqs = [
   {
-    q: "How do I book an appointment?",
-    a: "Click the Start Booking button to open SalonBridge, then choose your service, staff member, and time slot",
+  q: "How do I book a single appointment?",
+  a: "Click the Start Booking button to open the Booking Portal, choose your service, staff member, and preferred time slot. Payment is by EFT after your appointment.",
+},
+  {
+    q: "How do payments work?",
+    a: "Single appointments are paid by EFT after your visit. Memberships and party deposits are paid securely online when you sign up or book."
   },
   {
     q: "Do memberships require a contract?",

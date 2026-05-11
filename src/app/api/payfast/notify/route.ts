@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
             <p><strong>Email:</strong> ${params.email_address}</p>
             <p><strong>Payment ref:</strong> ${paymentId}</p>
             <hr/>
-            <p>Next step: Contact the customer to confirm their party date and send them the SalonBridge booking link.</p>
+            <p>Next step: Contact the customer to confirm their party date.</p>
           `
           : `
             <h2>New membership sign-up ✨</h2>
